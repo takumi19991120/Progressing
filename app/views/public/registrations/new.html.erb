@@ -1,29 +1,50 @@
-<h2>Sign up</h2>
+<div class='container'>
+<h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-5 ml-5">新規会員登録</h3>
+ <div class='row mt-4'>
+  <div class="col-sm-9 px-sm-0 offset-sm-1">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <table class="table table-borderless">
+    <tr>
+      <th><%= f.label :'ユーザー名', class: 'text-right'%></th>
+      <th><%= f.text_field :name, autofocus: true, class: "name", size: 23 %></th>
+    </tr>
+    <tr>
+      <th><%= f.label :'メールアドレス' %></th>
+      <th><%= f.email_field :email, autofocus: true, autocomplete: "email", size: 23 %></th>
+    </tr>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <tr>
+     <th>
+      <%= f.label :"パスワード" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %>文字以上)</em>
+      <% end %>
+     </th>
+     <th><%= f.password_field :password, autocomplete: "new-password", size: 23 %></th>
+    </tr>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <tr>
+      <th><%= f.label :'パスワード(確認用)' %></th>
+      <th><%= f.password_field :password_confirmation, autocomplete: "new-password", size: 23 %></th>
+    </tr>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+    <tr>
+      <th><%= f.submit "新規登録", class:'btn btn-success' %></th>
+    </tr>
+   </table>
+   <% end %>
   </div>
-<% end %>
+ </div>
+</div>
 
-<%= render "public/shared/links" %>
+
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-4 px-sm-0 offset-sm-1">
+     <p><%= render "public/shared/links" %></p>
+    </div>
+  </div>
+</div>

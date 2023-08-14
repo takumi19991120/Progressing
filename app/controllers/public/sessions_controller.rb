@@ -2,6 +2,27 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  def new
+    super
+  end
+
+  def create
+    super
+  end
+  
+  def destroy
+    super
+  end
+  
+  private
+
+  def after_sign_in_path_for(resource)
+    user_path(current_user.id)
+  end
+
+  def after_sign_out_path_for(resource)
+    root_path
+  end
 
   # GET /resource/sign_in
   # def new
