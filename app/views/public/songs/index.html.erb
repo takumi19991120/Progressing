@@ -1,2 +1,21 @@
-<h1>Public::Songs#index</h1>
-<p>Find me in app/views/public/songs/index.html.erb</p>
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>ジャンル</th>
+      <th>曲名</th>
+      <th>投稿内容</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr>
+        <!--<td><%#= image_tag song.user.get_profile_image, size:'50x50' %></td>-->
+        <td><%= song.genre.name %></td>
+        <td><%= link_to song.title,song_path(song.id) %></td>
+        <td><%= song.body %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
