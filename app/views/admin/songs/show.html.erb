@@ -1,2 +1,33 @@
-<h1>Admin::Songs#show</h1>
-<p>Find me in app/views/admin/songs/show.html.erb</p>
+<div class="container">
+<h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-5">投稿詳細</h3>
+ <div class="row">
+
+  <div class="col-11 mt-5">
+   <table class="table table-borderless">
+    <tr>
+     <th class="text-center">ユーザー画像/ユーザー名</th>
+     <td>
+       <%#= image_tag @song.user.get_profile_image, size:'50x50' %></br>
+       <%= @song.user.name %>
+     </td>
+    </tr> 
+    <tr>
+     <th class="text-center">ジャンル</th>
+     <td><%= @song.genre.name %></td>
+    </tr>
+    <tr>
+     <th class="text-center">曲名</th>
+     <td><%= @song.title %></td>
+    </tr>
+    <tr>
+     <th class="text-center">投稿内容</th>
+     <td><%= @song.body %><td>
+    </tr>
+   </table>
+
+   <div class="text-center">
+    <%= link_to 'Destroy', admin_song_path(@song), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+   </div>
+  </div>
+ </div>
+</div>

@@ -1,2 +1,32 @@
-<h1>Admin::Songs#index</h1>
-<p>Find me in app/views/admin/songs/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-5 mb-4">会員一覧</h3>
+
+    <table class='table table-hover table-inverse'>
+     <thead>
+      <tr>
+       <th>ユーザー画像/ユーザー名</th>
+       <th>ジャンル</th>
+       <th>曲名</th>
+       <th>投稿内容</th>
+      </tr>
+     </thead>
+     
+     <tbody>
+     <% @songs.each do |song| %>
+      <tr>
+       <td>
+        <%#= image_tag song.user.get_profile_image, size:'50x50' %></br>
+        <%= song.user.name %>
+       </td>
+       <td><%= song.genre.name %></td>
+       <td><%= link_to song.title, song_path(song.id) %></td>
+       <td><%= song.body %></td>
+      </tr>
+     <% end %>
+     </tbody>
+    </table>
+  </div>
+</div>
+
+  <%= paginate @songs %>

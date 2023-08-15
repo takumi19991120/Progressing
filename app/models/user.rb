@@ -11,4 +11,12 @@ class User < ApplicationRecord
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
   end
   
+  def user_status
+    if is_withdrawal == true
+      "退会"
+    else
+      "有効"
+    end
+  end
+  
 end
