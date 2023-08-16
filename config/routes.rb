@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "homes/about"=>"homes#about", as: "about"
   
-  resources :songs
+  resources :songs do
+    resource :favorites, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
+  end
   
   resources :users, only: [:show, :edit, :update]
   get "user/check"=>"users#check"

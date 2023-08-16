@@ -2,13 +2,13 @@
   <div class="row mt-4">
     <div class="col-sm-9 px-sm-0 offset-sm-3">
      <h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-4 mb-5">投稿編集</h3>
- 
+
        <%= form_with model: @song, local:true do |f| %>
        <table class="table table-borderless table-sm">
         <tr>
           <!--<td><%#= image_tag song.user.get_profile_image, size:'50x50' %></td>-->
           <th><%= @song.user.name %></th>
-        </tr> 
+        </tr>
         <tr>
           <th>ジャンル</th>
           <th><%= f.collection_select(:genre_id, @genres, :id, :name) %></th>

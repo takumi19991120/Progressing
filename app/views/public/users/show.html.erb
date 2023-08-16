@@ -1,3 +1,7 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+
 <table class='table'>
   <!--<tr><%#=image_tag @user.get_profile_image, size:'100x100' %></tr>-->
   <tr>
@@ -17,11 +21,13 @@
   <% end %>
   <% end %>
 </div>
+</div>
 
+
+<div class='col-md-8 offset-md-1'>
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
-      <th></th>
       <th>ジャンル</th>
       <th>曲名</th>
       <th>投稿内容</th>
@@ -30,10 +36,22 @@
   <tbody>
     <% @songs.each do |song| %>
       <tr>
-        <!--<td><%#= image_tag song.user.get_profile_image, size:'50x50' %></td>-->
         <td><%= song.genre.name %></td>
         <td><%= link_to song.title,song_path(song.id) %></td>
         <td><%= song.body %></td>
+        <td>
+          <% if song.favorited?(current_user) %>
+          <%= link_to song_favorites_path(song), method: :delete, remote: true do %>
+          <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+          <%= song.favorites.count %>
+          <% end %>
+          <% else %>
+          <%= link_to song_favorites_path(song), method: :post, remote: true do %>
+          <i class="fas fa-heart" aria-hidden="true"></i>
+          <%= song.favorites.count %>
+          <% end %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -43,5 +61,8 @@
   <%= link_to new_song_path do %>
   <button type="button" class="btn shadow rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
 <% end %>
+</div>
+    </div>
+  </div>
 </div>
 

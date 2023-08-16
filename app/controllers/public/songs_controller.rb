@@ -24,6 +24,8 @@ class Public::SongsController < ApplicationController
   def show
     @song = Song.find(params[:id])
     @user = @song.user
+    @comment = Comment.new
+    @song_comments = @song.comments
   end
 
   def edit
