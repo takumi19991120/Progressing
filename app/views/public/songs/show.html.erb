@@ -5,7 +5,7 @@
   <div class="col-11 mt-5">
    <table class="table table-borderless">
     <tr>
-     <!--<td><%#= image_tag song.user.get_profile_image, size:'50x50' %></td>-->
+     <td><%= image_tag @song.user.get_image, size:'50x50' %></td>
      <th><%= @song.user.name %></th>
     </tr>
     <tr>
@@ -58,7 +58,7 @@
     <tr>
       <td>
         <%= link_to user_path(comment.user) do %>
-          <!--<%#= image_tag book_comment.user.get_profile_image, size: "50x50" %><br>-->
+          <%= image_tag comment.user.get_image, size: "50x50" %><br>
           <%= comment.user.name %>
         <% end %>
       </td>

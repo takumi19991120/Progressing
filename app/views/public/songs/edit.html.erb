@@ -6,7 +6,7 @@
        <%= form_with model: @song, local:true do |f| %>
        <table class="table table-borderless table-sm">
         <tr>
-          <!--<td><%#= image_tag song.user.get_profile_image, size:'50x50' %></td>-->
+          <td><%= image_tag @song.user.get_image, size:'50x50' %></td>
           <th><%= @song.user.name %></th>
         </tr>
         <tr>

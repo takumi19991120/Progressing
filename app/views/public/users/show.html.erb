@@ -3,7 +3,7 @@
     <div class='col-md-3'>
 
 <table class='table'>
-  <!--<tr><%#=image_tag @user.get_profile_image, size:'100x100' %></tr>-->
+  <tr><%= image_tag @user.get_image, size:'100x100' %></tr>
   <tr>
 	  <th>name</th>
 	  <th><%= @user.name %></th>
@@ -51,6 +51,10 @@
           <%= song.favorites.count %>
           <% end %>
           <% end %>
+        </td>
+        <td>
+          <i class="fa-regular fa-comment"></i>
+          <%= song.comments.count %>
         </td>
       </tr>
     <% end %>
