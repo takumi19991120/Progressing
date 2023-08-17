@@ -20,10 +20,19 @@ class Public::UsersController < ApplicationController
   def check
   end
   
+  def withdraw
+    @user = User.find(current_user.id)
+    @user.update(is_withdrawal: true)
+    reset_session
+    redirect_to root_path
+  end
+
+  
+  
   private
 
   def user_params
-    params.require(:user).permit(:name,:introduction,:image)
+    params.require(:user).permit(:name,:introduction,:image,:is_withdrawal)
   end
   
 end

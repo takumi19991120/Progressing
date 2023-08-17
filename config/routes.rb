@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   end
   
   resources :users, only: [:show, :edit, :update]
-  get "user/check"=>"users#check"
-  patch "/users/withdraw" => "users#withdraw"
+  get "/user/check"=>"users#check"
+  patch "/user/withdraw" => "users#withdraw"
   end
   
   namespace :admin do

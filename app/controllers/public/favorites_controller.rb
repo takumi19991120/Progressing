@@ -1,15 +1,15 @@
 class Public::FavoritesController < ApplicationController
-
+  
   def create
-   @song_favorite = Favorite.new(user_id: current_user.id, song_id: params[:song_id])
-   @song_favorite.save
-   redirect_back(fallback_location: root_path)
+    @song = Song.find(params[:song_id])
+    favorite = current_user.favorites.new(song_id: @song.id)
+    favorite.save
   end
-
- def destroy
-  @song_favorite = Favorite.find_by(user_id: current_user.id, song_id: params[:song_id])
-  @song_favorite.destroy
-  redirect_back(fallback_location: root_path)
- end
-
+  
+  def destroy
+    @song = Song.find(params[:song_id])
+    favorite = current_user.favorites.find_by(song_id: @song.id)
+    favorite.destroy
+  end
+  
 end

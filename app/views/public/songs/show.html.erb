@@ -22,19 +22,7 @@
     </tr>
     <tr>
      <th class="text-center">いいね</th>
-     <td>
-      <% if @song.favorited?(current_user) %>
-      <%= link_to song_favorites_path(@song), method: :delete, remote: true do %>
-      <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-      <%= @song.favorites.count %>
-      <% end %>
-      <% else %>
-      <%= link_to song_favorites_path(@song), method: :post, remote: true do %>
-      <i class="fas fa-heart" aria-hidden="true"></i>
-      <%= @song.favorites.count %>
-      <% end %>
-      <% end %>
-     </td>
+     <td><%= render "public/favorites/favorites", song: @song %></td> 
     </tr>
    </table>
 
