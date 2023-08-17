@@ -12,6 +12,9 @@
 	  <th>introduction</th>
 	  <th><%= @user.introduction %></th>
   </tr>
+  <tr>
+    <th><%= link_to "いいねした投稿", favorites_user_path(@user) %></th>
+  </tr>
 </table>
 
 <div class='row'>
