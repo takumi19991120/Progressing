@@ -1,3 +1,16 @@
+<div class="container">
+
+<h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-5">投稿一覧</h3>
+
+<div class="search_form pe-3">
+<%= search_form_for @q, url: songs_path do |f| %>
+   <%= f.search_field :title_or_body_or_genre_cont, class: 'form-control', placeholder: '検索ワード' %>
+   <%= f.submit '検索', class: 'btn btn-primary' %>
+<% end %>
+</div>
+
+ <div class="row">
+
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
@@ -39,3 +52,6 @@
     <% end %>
   </tbody>
 </table>
+  </div>
+ </div>
+</div>

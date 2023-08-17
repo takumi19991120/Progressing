@@ -18,7 +18,8 @@ class Public::SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.all
+    @q = Song.ransack(params[:q])
+    @songs = @q.result(distinct: true).includes(:user)
   end
 
   def show
