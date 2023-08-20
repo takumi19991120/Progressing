@@ -1,0 +1,2 @@
+$('#comments').html("<%= j(render "public/comments/index", { song: @song , song_comments: @song_comments }) %>");
+$('#comment_count').html("<%= @song.comments.count %>")

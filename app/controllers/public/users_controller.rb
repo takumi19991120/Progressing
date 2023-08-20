@@ -24,6 +24,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(current_user.id)
     @user.update(is_withdrawal: true)
     reset_session
+    @user.songs.destroy_all
     redirect_to root_path
   end
 

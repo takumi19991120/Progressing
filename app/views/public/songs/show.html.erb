@@ -22,7 +22,7 @@
     </tr>
     <tr>
      <th class="text-center">いいね</th>
-     <td><%= render "public/favorites/favorites", song: @song %></td> 
+     <td id="favorite_buttons_<%=@song.id%>"><%= render "public/favorites/favorites", song: @song %></td>
     </tr>
    </table>
 
@@ -33,33 +33,13 @@
     <% end %>
    </div>
 
-   <%= form_with model: [@song, @comment], local: false do |f| %>
-    <%= f.text_area :content, rows:'5',placeholder: "Any comments on this post?", class:"form-control mt-3"  %>
-     <div class="text-right">
-      <%= f.submit "Submit", class: "btn btn-primary mt-3 mb-3" %>
-     </div>
-   <% end %>
+   <div id="comment-form">
+     <%= render "public/comments/form", { song: @song , comment: @comment } %>
+   </div>
 
-<table>
-  <tbody>
-    <% @song_comments.each do |comment| %>
-    <tr>
-      <td>
-        <%= link_to user_path(comment.user) do %>
-          <%= image_tag comment.user.get_image, size: "50x50" %><br>
-          <%= comment.user.name %>
-        <% end %>
-      </td>
-      <td><%= comment.content %></td>
-      <td>
-        <% if comment.user == current_user %>
-          <%= link_to "Destroy", song_comment_path(@song, comment), method: :delete, class: "btn btn-sm btn-danger float-end", remote: true %>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+   <div id="comments">
+     <%= render "public/comments/index", { song: @song , song_comments: @song_comments } %>
+   </div>
   </div>
  </div>
 </div>

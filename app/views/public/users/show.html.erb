@@ -42,8 +42,8 @@
         <td><%= song.genre.name %></td>
         <td><%= link_to song.title,song_path(song.id) %></td>
         <td><%= song.body %></td>
-        <td><%= render "public/favorites/favorites", song: song %></td>
-        <td>
+        <td id="favorite_buttons_<%=song.id%>"><%= render "public/favorites/favorites", song: song %></td>
+        <td id="comment_count">
           <i class="fa-regular fa-comment"></i>
           <%= song.comments.count %>
         </td>
