@@ -2,7 +2,11 @@
   <div class="row mt-4">
     <div class="col-sm-9 px-sm-0 offset-sm-3">
      <h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-4 mb-5">ユーザー編集</h3>
- 
+
+     <% if @user.email == "guest@example.com" %>
+      <p>ゲストユーザーはユーザー情報の編集ができません。</p>
+    <% else %>
+
       <%= form_with model: @user, local:true do |f| %>
       <table class="table table-borderless table-sm">
         <tr>
@@ -22,6 +26,7 @@
           <td><%= link_to "退会する", user_check_path, class:"btn btn-danger" %></td>
         </tr>
       </table>
+      <% end %>
       <% end %>
     </div>
   </div>

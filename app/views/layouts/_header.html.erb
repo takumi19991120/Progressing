@@ -54,6 +54,10 @@
             <% end %>
           </li>
           <li class="btn btn-outline-light btn-sm ml-1">
+            <%= link_to users_guest_sign_in_path, method: :post,class: 'nav-link text-light' do %> ゲストログイン
+            <% end %>
+          </li>
+          <li class="btn btn-outline-light btn-sm ml-1">
             <%= link_to new_user_registration_path,class: 'nav-link text-light' do %> 新規登録
             <% end %>
           </li>
