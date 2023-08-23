@@ -1,33 +1,38 @@
 <div class="container">
-  <div class="row mt-4">
-    <div class="col-sm-9 px-sm-0 offset-sm-3">
-     <h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-4 mb-5">ユーザー編集</h3>
+  <div class="row mt-5">
+    <div class="col-sm-10 px-sm-0 offset-sm-2">
+     <h3 class="text-info font-weight-bold mt-4 ml-5">ユーザー編集</h3>
 
      <% if @user.email == "guest@example.com" %>
       <p>ゲストユーザーはユーザー情報の編集ができません。</p>
-    <% else %>
+     <% else %>
 
       <%= form_with model: @user, local:true do |f| %>
-      <table class="table table-borderless table-sm">
+      <table class="table table-borderless table-sm mt-4">
         <tr>
-          <th style="width:200px;">ユーザー画像</th>
+          <th class="text-center">ユーザー画像</th>
           <td><%= f.file_field :image %></td>
         </tr>
         <tr>
-          <th>ユーザー名</th>
+          <th class="text-center">ユーザー名</th>
           <th><%= f.text_field :name, size:"30x5" %></th>
         </tr>
         <tr>
-          <th>自己紹介</th>
-          <th><%= f.text_area :introduction, size:"31x5" %></th>
-        </tr>
-        <tr>
-          <td><%= f.submit "編集内容を保存", class:"btn btn-success" %></td>
-          <td><%= link_to "退会する", user_check_path, class:"btn btn-danger" %></td>
+          <th class="text-center">自己紹介</th>
+          <th><%= f.text_area :introduction, size:"33x7" %></th>
         </tr>
       </table>
-      <% end %>
-      <% end %>
     </div>
   </div>
+  
+  <div class="row">
+   <div class="mx-auto mb-5">
+    <div class="text-center mt-4">
+     <%= f.submit "編集内容を保存", class:"btn btn-success" %>
+     <%= link_to "退会する", user_check_path, class:"btn btn-danger ml-4" %>
+    </div>
+   </div>
+  </div>
+     <% end %>
+     <% end %>
 </div>
