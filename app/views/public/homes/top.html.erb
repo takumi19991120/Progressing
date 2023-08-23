@@ -1,8 +1,16 @@
-<div class="card  text-center">
-  <div class="card-img-overlay">
-    <h1 class="display-3 font-weight-bold">ようこそ、Progressingへ！</h1>
-    <h5 class="font-weight-bold">このサイトは、歌唱力UPのためのコミュニティサイトになります。
-      会員でない方も投稿の閲覧はできますが、購入には会員登録が必要になります。</h5>
+<div class="container ">
+  <div class="row mt-5">
+    <div class='mx-auto col-xs'>
+    <h2 class="text-center font-weight-bold font-italic mb-4">Welcome Progressing!</h2>
+    <h5 class="font-weight-bold">このサイトは、歌唱力UPのためのコミュニティサイトになります。</br>
+      投稿や投稿の閲覧には会員登録が必要になります。</h5>
+        <div class="row">
+          <%= link_to '登録済みの方はこちら',new_user_session_path, class: "btn btn-info btn-sm btn-block mb-3 sign_in" %>
+        </div>
+        <div class="row">
+          <%= link_to '新規登録はこちら',new_user_registration_path, class: "btn btn-success btn-sm btn-block sign_up" %>
+       </div>
+    </div>
   </div>
 </div>
 
