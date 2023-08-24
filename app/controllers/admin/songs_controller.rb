@@ -1,10 +1,14 @@
 class Admin::SongsController < ApplicationController
   def index
-    @songs = Song.all.page(params[:page]).per(10)
+    @q = Song.ransack(params[:q])
+    @songs = @q.result(distinct: true).includes(:user)
   end
 
   def show
     @song = Song.find(params[:id])
+    @user = @song.user
+    @comment = Comment.new
+    @song_comments = @song.comments
   end
   
   def destroy

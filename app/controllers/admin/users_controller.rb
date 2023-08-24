@@ -1,10 +1,13 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all.page(params[:page]).per(10)
+    @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
+    @songs = @user.songs.all
+    @favorites = Favorite.where(user_id: @user.id).pluck(:song_id)
+    @favorite_songs = Song.find(@favorites)
   end
 
   def destroy

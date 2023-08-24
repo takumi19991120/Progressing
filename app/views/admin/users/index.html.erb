@@ -1,35 +1,37 @@
 <div class="container">
-  <div class="row">
-    <h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-5 mb-4">会員一覧</h3>
-
-      <table class="table table-hover table-inverse">
-        <thead>
-          <tr class="table-secondary">
-            <th>会員ID</th>
-            <th>プロフィール画像/名前</th>
-            <th>メールアドレス</th>
-            <th>自己紹介文</th>
-            <th>ステータス</th>
-          </tr>
-        </thead>
-
-       <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= link_to user.id, admin_user_path(user.id) %></td>
-            <td>
-              <%#=image_tag @user.get_profile_image, size:'100x100' %></br>
-              <%= user.name %>
-            </td>
-            <td><%= user.email %></td>
-            <td><%= user.introduction %></td>
-            <td><%= user.customer_status %></td>
-          </tr>
-       </tbody>
-      <% end %>
-      <%= paginate @users %>
-      </table>
-    </div>
+ <div class="row mt-5">
+  <div class='col'>
+   <h3 class="text-info font-weight-bold">会員一覧</h3>
   </div>
-
-  <%= paginate @users %>
+ </div>
+   <div class="row mt-3">
+        <% @users.each do |user| %>
+    <div class="col-md-3 mb-3">
+     <div class="card">
+     <div class="card-img-top"><%= image_tag user.get_image %></div>
+      <div class="card-body">
+       <h5 class="card-title mb-1 font-weight-bold"><%= user.name %></h5>
+       <h6 class="card-subtitle mb-3">
+          <i class="fa-solid fa-envelope"></i>
+          <%= user.email %>
+       </h6>
+       <p class="card-text"><%= truncate(user.introduction, length: 8) %></p>
+      <table class="">
+       <tr>
+        <td>
+         <i class="fa-solid fa-person"></i>
+         <%= user.user_status %>
+        </td> 
+        <td style="padding-left:20px">
+         <%= link_to admin_user_path(user.id) do %>
+         <i class="fa-solid fa-circle-info"></i>詳細
+         <% end %>
+        </td>
+       </tr>
+      </table>
+      </div>
+     </div>
+    </div>
+    <% end %>
+   </div>
+</div>

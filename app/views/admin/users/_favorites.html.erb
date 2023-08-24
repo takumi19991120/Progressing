@@ -1,28 +1,6 @@
-<%= search_form_for @q, url: songs_path do |f| %>
-<div class="container">
- <div class="row mt-5">
-  <div class='col'>
-   <h3 class="text-info font-weight-bold">投稿一覧</h3>
-  </div>
-  <div class='col-2'>
-
-   <%= f.search_field :genre_name_cont, class: 'form-control', placeholder: 'ジャンル' %>
-  </div>
-  <div class='col-offset-5 col-2'>
-   <%= f.search_field :title_or_body_or_user_name_cont, class: 'form-control', placeholder: 'キーワード' %>
-  </div>
-  <div class='col-3'>
-   <%= button_tag type: "submit", class: 'btn btn-primary' do %>
-    <i class="fas fa-search"></i>
-   <% end %>
-  </div>
- </div>
-<% end %>
-
-
   <div class="row mt-3">
-   <% @songs.each do |song| %>
-    <div class="col-md-3 mb-3">
+    <% favorite_songs.each do |song| %>
+    <div class="col-md-4 mb-3">
      <div class="card">
       <p class="ml-2 mt-2"><%= song.created_at.strftime('%Y/%m/%d %H:%M') %></p>
      <div class="card-img-top">
@@ -37,7 +15,7 @@
           <i class="fa-solid fa-tag"></i>
           <%= song.genre.name %>
        </h6>
-       <p class="card-text"><%= truncate(song.body, length: 8) %></p>
+       <p class="card-text"><%= truncate(song.body, length: 7) %></p>
       </div>
       <table class="ml-3 mb-3">
        <tr>
@@ -54,4 +32,3 @@
     </div>
     <% end %>
   </div>
-</div>

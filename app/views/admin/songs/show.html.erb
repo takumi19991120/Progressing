@@ -1,16 +1,25 @@
 <div class="container">
-<h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-5">投稿詳細</h3>
- <div class="row">
+  <div class="row mt-4">
+    <div class="col">
+     <h3 class="text-info font-weight-bold mt-4"> 投稿詳細</h3>
+    </div>
+   </div>
 
-  <div class="col-11 mt-5">
+  <div class="row mt-4">
+    <div class="col-6">
    <table class="table table-borderless">
     <tr>
-     <th class="text-center">ユーザー画像/ユーザー名</th>
+     <th class="text-center">ユーザー画像</th>
      <td>
-       <%#= image_tag @song.user.get_profile_image, size:'50x50' %></br>
-       <%= @song.user.name %>
+      <%= link_to user_path(@song.user.id) do %>
+      <%=image_tag @song.user.get_image, size: "130x130" %>
+      <% end %>
      </td>
-    </tr> 
+    </tr>
+    <tr>
+     <th class="text-center">ユーザー名</th>
+     <td><%= @song.user.name %></td>
+    </tr>
     <tr>
      <th class="text-center">ジャンル</th>
      <td><%= @song.genre.name %></td>
@@ -21,12 +30,27 @@
     </tr>
     <tr>
      <th class="text-center">投稿内容</th>
-     <td><%= @song.body %><td>
+     <td><%= simple_format(@song.body) %><td>
+    </tr>
+    <tr>
+     <th class="text-center">投稿日時</th>
+     <td><%= @song.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+    </tr>
+    <tr>
+     <td id="favorite_buttons_<%=@song.id%>", class="text-center"><%= render "public/favorites/favorites", song: @song %></td>
+     <td id="comment_count"><%= render "public/comments/count", song: @song %></td>
     </tr>
    </table>
+   
+   <div class="mx-auto", style="padding-left:90px">
+    <%= link_to 'ユーザーの投稿を削除する', admin_song_path(@song), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+   </div>
+ </div>
 
-   <div class="text-center">
-    <%= link_to 'Destroy', admin_song_path(@song), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+  <div class="col-5 offset-1">
+  <h3 class="text-info font-weight-bold">コメント</h3>
+   <div id="admin-comments">
+     <%= render "public/comments/admin-index", { song: @song , song_comments: @song_comments } %>
    </div>
   </div>
  </div>
