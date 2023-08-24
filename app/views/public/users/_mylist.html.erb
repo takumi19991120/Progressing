@@ -1,0 +1,32 @@
+ <div class="row mt-3">
+  <% songs.each do |song| %>
+   <div class="col-md-4 mb-3">
+    <div class="card">
+     <p class="ml-2 mt-2"><%= song.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+      <div class="card-img-top">
+       <%= image_tag song.user.get_image %>
+       <p class="ml-4 font-weight-bold"><%= song.user.name %></p>
+      </div> 
+       <div class="card-body">
+        <h5 class="card-title mb-3 font-weight-bold"><%= song.title %></h5>
+        <h6 class="card-subtitle mb-4">
+         <i class="fa-solid fa-tag"></i>
+         <%= song.genre.name %>
+        </h6>
+        <p class="card-text"><%= truncate(song.body, length: 7) %></p>
+      </div>
+      <table class="ml-3 mb-3">
+       <tr>
+        <td id="favorite_buttons_<%=song.id%>"><%= render "public/favorites/favorites", song: song %></td>
+        <td id="comment_count"><%= render "public/comments/count", song: song %></td>
+        <td>
+         <%= link_to song_path(song.id) do %>
+          <i class="fa-solid fa-circle-info"></i>詳細
+         <% end %>
+        </td>
+       </tr>
+      </table>
+     </div>
+    </div>
+      <% end %>
+  </div> 

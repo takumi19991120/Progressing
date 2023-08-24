@@ -4,7 +4,9 @@
      <h3 class="text-info font-weight-bold mt-4 ml-5">ユーザー編集</h3>
 
      <% if @user.email == "guest@example.com" %>
+     <div class="text-center", style="padding-top:200px">
       <p>ゲストユーザーはユーザー情報の編集ができません。</p>
+     </div> 
      <% else %>
 
       <%= form_with model: @user, local:true do |f| %>
