@@ -7,20 +7,30 @@
        <td><%= image_tag @user.get_image, size:'100x100' %></td>
       </tr>
       <tr>
-	      <th class="text-center">ユーザー名</th>
-	      <th><%= @user.name %></th>
+	   <th class="text-center">ユーザー名</th>
+	   <th><%= @user.name %></th>
       </tr>
       <tr>
-	      <th class="text-center">メールアドレス</th>
-	      <th><%= @user.email %></th>
+	   <th class="text-center">メールアドレス</th>
+	   <th><%= @user.email %></th>
       </tr>
       <tr>
-	      <th class="text-center">自己紹介</th>
-	      <th><%= @user.introduction %></th>
+	   <th class="text-center">自己紹介</th>
+	   <th><%= @user.introduction %></th>
       </tr>
       <tr>
-	      <th class="text-center">作成日時</th>
-	      <th><%= @user.created_at.strftime('%Y/%m/%d %H:%M') %></th>
+	   <th class="text-center">ステータス</th>
+	   <th>
+	    <% if @user.is_withdrawal == true %>
+         <span style="color:darkgray;"><%= "退会" %></strong>
+        <% else %>
+         <strong style="color:orange;"><%= "有効" %></strong>
+        <% end %>
+      </th>
+      </tr>
+      <tr>
+	   <th class="text-center">作成日時</th>
+	   <th><%= @user.created_at.strftime('%Y/%m/%d %H:%M') %></th>
       </tr>      
      </table>
      

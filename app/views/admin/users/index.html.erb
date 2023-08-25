@@ -16,12 +16,16 @@
           <%= user.email %>
        </h6>
        <p class="card-text"><%= truncate(user.introduction, length: 8) %></p>
-      <table class="">
+      <table>
        <tr>
         <td>
          <i class="fa-solid fa-person"></i>
-         <%= user.user_status %>
-        </td> 
+         <% if user.is_withdrawal == true %>
+          <span style="color:darkgray;"><%= "退会" %></strong>
+         <% else %>
+          <strong style="color:orange;"><%= "有効" %></strong>
+         <% end %>
+        </td>
         <td style="padding-left:20px">
          <%= link_to admin_user_path(user.id) do %>
          <i class="fa-solid fa-circle-info"></i>詳細
