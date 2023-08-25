@@ -26,7 +26,7 @@
      <div class="card">
       <p class="ml-2 mt-2"><%= song.created_at.strftime('%Y/%m/%d %H:%M') %></p>
      <div class="card-img-top">
-     <%= link_to user_path(song.user.id) do %>
+     <%= link_to admin_user_path(song.user.id) do %>
       <%= image_tag song.user.get_image %>
      <% end %>
      <p class="ml-4 font-weight-bold"><%= song.user.name %></p>
