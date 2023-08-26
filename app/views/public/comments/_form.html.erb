@@ -1,10 +1,10 @@
  <div class="row mt-3">
+     <%= form_with model: [song, comment], local: false do |f| %>
   <div class='col'>
-   <%= form_with model: [song, comment], local: false do |f| %>
     <%= f.text_area :content, rows:'5',placeholder: "コメントする", size: "45x3" %>
   </div>
    <div class='col'>
-    <div class="text-left mt-4">
+    <div class="mt-1">
      <%= button_tag type: "submit", class: 'btn btn-primary' do %>
      <i class="fa-solid fa-paper-plane"></i>
     </div>

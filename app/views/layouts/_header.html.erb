@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark p-4" style="background-color: #deb887;">
     <div class="container-md">
 
-      <a class="navbar-brand" href="/"><h1>Progressing</h1></a>
+      <a class="navbar-brand" href="/"><%= image_tag 'Progressing.png' %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -11,57 +11,57 @@
 
         <% if user_signed_in? %>
 
-          <li class='mr-5 mt-3' style="color: #fff;">
+          <li class='mt-3 font-weight-bold' style="color: #fff; padding-right:60px">
             ようこそ、<%= current_user.name %>さん！
           </li>
 
-          <li class="btn btn-outline-light btn-sm ml-1">
+          <li class="btn btn-outline-light btn-sm ml-3">
             <%= link_to user_path(current_user),class: 'nav-link text-light' do %> マイページ
             <% end %>
           </li>
-          <li class="btn btn-outline-light btn-sm ml-1">
+          <li class="btn btn-outline-light btn-sm ml-3">
             <%=  link_to songs_path,class: 'nav-link text-light' do %> 投稿一覧
             <% end %>
           </li>
-          <li class="btn btn-outline-light btn-sm ml-1">
+          <li class="btn btn-outline-light btn-sm ml-3">
             <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %> ログアウト
             <% end %>
           </li>
 
         <% elsif admin_signed_in? %>
 
-          <li class="btn btn-outline-light btn-sm ml-1">
+          <li class="btn btn-outline-light btn-sm ml-3">
             <%=  link_to admin_users_path ,class: 'nav-link text-light' do %> 会員一覧
             <% end %>
           </li>
-          <li class="btn btn-outline-light btn-sm ml-1">
+          <li class="btn btn-outline-light btn-sm ml-3">
             <%=  link_to admin_songs_path ,class: 'nav-link text-light' do %> 投稿一覧
             <% end %>
           </li>
-          <li class="btn btn-outline-light btn-sm ml-1">
+          <li class="btn btn-outline-light btn-sm ml-3">
             <%=  link_to admin_genres_path ,class: 'nav-link text-light' do %> ジャンル一覧
             <% end %>
           </li>
-          <li class="btn btn-outline-light btn-sm ml-1">
+          <li class="btn btn-outline-light btn-sm ml-3">
             <%=  link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %> ログアウト
             <% end %>
           </li>
 
         <% else %>
 
-          <li class="btn btn-outline-light btn-sm ml-1">
-            <%= link_to about_path,class: 'nav-link text-light' do %> About
+          <li class="btn btn-outline-light btn-sm ml-3">
+            <%= link_to root_path,class: 'nav-link text-light' do %> Home
             <% end %>
           </li>
-          <li class="btn btn-outline-light btn-sm ml-1">
+          <li class="btn btn-outline-light btn-sm ml-3">
             <%= link_to users_guest_sign_in_path, method: :post,class: 'nav-link text-light' do %> ゲストログイン
             <% end %>
           </li>
-          <li class="btn btn-outline-light btn-sm ml-1">
+          <li class="btn btn-outline-light btn-sm ml-3">
             <%= link_to new_user_registration_path,class: 'nav-link text-light' do %> 新規登録
             <% end %>
           </li>
-          <li class="btn btn-outline-light btn-sm ml-1">
+          <li class="btn btn-outline-light btn-sm ml-3">
             <%= link_to new_user_session_path ,class: 'nav-link text-light' do %> ログイン
             <% end %>
           </li>
