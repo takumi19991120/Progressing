@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+.wrapper{
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+}
+
+footer{
+    width: 100%;
+    background-color: #deb887;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+
+ position: absolute;
+    bottom: 0;
+}

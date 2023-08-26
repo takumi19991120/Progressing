@@ -1,4 +1,6 @@
 class Admin::SongsController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @q = Song.ransack(params[:q])
     @songs = @q.result(distinct: true).includes(:user)
