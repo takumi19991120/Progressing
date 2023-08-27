@@ -1,20 +1,22 @@
  <div class="row mt-3">
   <% songs.each do |song| %>
    <div class="col-md-4 mb-3">
-    <div class="card">
-     <p class="ml-2 mt-2"><%= song.created_at.strftime('%Y/%m/%d %H:%M') %></p>
-      <div class="card-img-top">
-       <%= image_tag song.user.get_image %>
-       <p class="ml-4 font-weight-bold"><%= song.user.name %></p>
-      </div> 
-       <div class="card-body">
-        <h5 class="card-title mb-3 font-weight-bold"><%= song.title %></h5>
-        <h6 class="card-subtitle mb-4">
-         <i class="fa-solid fa-tag"></i>
-         <%= song.genre.name %>
-        </h6>
-        <p class="card-text"><%= truncate(song.body, length: 7) %></p>
-      </div>
+     <div class="card h-100">
+      <p class="ml-2 mt-2"><%= song.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+     <div class="card-img-top ">
+      <%= image_tag song.user.get_image, size: "50×50" %>
+     <p class="font-weight-bold ml-2">
+      <i class="fa-solid fa-user"></i>
+      <%= song.user.name %>
+     </p>
+     </div>
+     <p class="card-title ml-2 font-weight-bold">
+      <i class="fa-solid fa-record-vinyl"></i>
+      <%= truncate(song.title, length: 7) %>
+      <i class="fa-solid fa-tag", style="padding-left:10px;"></i>
+      <%= song.genre.name %>
+     </p>
+     <p class="card-text ml-2 mt-2"><%= truncate(song.body, length: 28) %></p>
       <table class="ml-3 mb-3">
        <tr>
         <td id="favorite_buttons_<%=song.id%>"><%= render "public/favorites/favorites", song: song %></td>
@@ -28,5 +30,5 @@
       </table>
      </div>
     </div>
-      <% end %>
-  </div> 
+    <% end %>
+  </div>
