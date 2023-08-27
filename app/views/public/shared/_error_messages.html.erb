@@ -1,6 +1,6 @@
 <% if resource.errors.any? %>
   <div id="error_explanation" data-turbo-cache="false">
-    <ul class="font-weight-bold", style="padding-left:70px; color:#FF0000">
+    <ul class="font-weight-bold", style="padding-left:70px; color:#FF0000; list-style:none">
       <% resource.errors.full_messages.each do |message| %>
         <li>
           <i class="fa-regular fa-circle-xmark"></i>

@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   
   validates :name, presence: true
+  validates :name, length: { maximum: 10 }
   
   def get_image
     (image.attached?) ? image : 'no_image.jpg'
