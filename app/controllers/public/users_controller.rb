@@ -15,8 +15,9 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(current_user), notice: "You have updated book successfully."
+      redirect_to user_path(current_user), notice: "ユーザー情報を更新しました"
     else
+      flash.now[:alert] = '名前が未入力のため更新に失敗しました'
       render :edit
     end
   end
@@ -28,7 +29,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(current_user.id)
     @user.update(is_withdrawal: true)
     reset_session
-    redirect_to root_path
+    redirect_to root_path, notice: "退会しました"
   end
 
   def favorites

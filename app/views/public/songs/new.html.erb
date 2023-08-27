@@ -1,30 +1,32 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-sm-9 px-sm-0 offset-sm-3">
-
-<h3 class="text-info font-weight-bold mt-4">新しい投稿</h3>
-
-<%= form_with model: @song, url:songs_path, local:true do |f| %>
-<table class="table table-borderless table-sm mt-4">
-  <tr>
-    <th>ジャンル</th>
-    <th><%= f.collection_select(:genre_id, @genres, :id, :name,{ prompt: "選択してください" }) %></th>
-  </tr>
-  <tr>
-    <th>曲名</th>
-    <th><%= f.text_field :title, size:"30x5" %></th>
-  </tr>
-  <tr>
-    <th>投稿内容</th>
-    <th><%= f.text_area :body, size:"33x7" %></th>
-  </tr>
-</table>
-
-<div class="col-sm-9 px-sm-0 offset-sm-3">
-  <%= f.submit "投稿する",class: "btn btn-success" %>
-</div>
-<% end %>
-
+    <h3 class="text-info font-weight-bold mt-4">新しい投稿</h3>
+     <% flash.each do |message_type, message| %>
+     <div class="font-weight-bold mt-3", style="padding-left:70px; color:#FF0000">
+      <i class="fa-regular fa-circle-xmark"></i>
+      <%= message %>
+     </div>
+     <% end %>
+     <%= form_with model: @song, url:songs_path, local:true do |f| %>
+     <table class="table table-borderless table-sm mt-4">
+      <tr>
+       <th>ジャンル</th>
+       <th><%= f.collection_select(:genre_id, @genres, :id, :name,{ prompt: "選択してください" }) %></th>
+     </tr>
+     <tr>
+      <th>曲名</th>
+      <th><%= f.text_field :title, size:"30x5" %></th>
+     </tr>
+     <tr>
+      <th>投稿内容</th>
+      <th><%= f.text_area :body, size:"33x7" %></th>
+     </tr>
+    </table>
+     <div class="col-sm-9 px-sm-0 offset-sm-3">
+      <%= f.submit "投稿する",class: "btn btn-success" %>
+     </div>
+    <% end %>
     </div>
   </div>
 </div>

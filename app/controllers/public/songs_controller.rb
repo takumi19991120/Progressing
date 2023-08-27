@@ -10,10 +10,12 @@ class Public::SongsController < ApplicationController
     @song = Song.new(song_params)
     @song.user_id = current_user.id
     if @song.save
-      redirect_to user_path(current_user), notice: "You have created book successfully."
+      redirect_to user_path(current_user), notice: "投稿に成功しました"
     else
+      @genres = Genre.all
       @songs = Song.all
       @song = Song.new
+      flash.now[:alert] = '曲名か投稿内容が空欄のため投稿に失敗しました'
       render :new
     end
   end
@@ -38,8 +40,10 @@ class Public::SongsController < ApplicationController
   def update
     @song = Song.find(params[:id])
     if @song.update(song_params)
-      redirect_to song_path(@song), notice: "You have updated book successfully."
+      redirect_to song_path(@song), notice: "投稿内容を更新しました"
     else
+      @genres = Genre.all
+      flash.now[:alert] = '曲名か投稿内容が空欄のため更新に失敗しました'
       render :edit
     end
   end
@@ -47,7 +51,7 @@ class Public::SongsController < ApplicationController
   def destroy
     @song = Song.find(params[:id])
     @song.destroy
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user), notice: "投稿を削除しました"
   end
 
 

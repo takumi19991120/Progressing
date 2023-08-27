@@ -1,6 +1,14 @@
 <div class="container">
   <div class='row mt-5'>
     <div class='col-md-4'>
+     
+     <% flash.each do |message_type, message| %>
+     <div class="font-weight-bold", style="padding-left:30px; color:#00CED1">
+      <i class="fa-regular fa-circle-check"></i>
+      <%= message %>
+     </div>
+     <% end %>
+     
      <table class='table table-borderless'>
       <tr>
        <td><%= image_tag @user.get_image, size:'100x100' %></td>

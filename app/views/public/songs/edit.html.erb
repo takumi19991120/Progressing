@@ -1,10 +1,15 @@
 <div class="container">
-  <div class="row mt-4">
+  <div class="row mt-5">
     <div class="col-sm-9 px-sm-0 offset-sm-3">
-     <h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-4 mb-5">投稿編集</h3>
-
+     <h3 class="text-info font-weight-bold mt-4">投稿編集</h3>
+       <% flash.each do |message_type, message| %>
+       <div class="font-weight-bold mt-3", style="padding-left:70px; color:#FF0000">
+        <i class="fa-regular fa-circle-xmark"></i>
+        <%= message %>
+       </div>
+       <% end %>
        <%= form_with model: @song, local:true do |f| %>
-       <table class="table table-borderless table-sm">
+       <table class="table table-borderless table-sm mt-4">
         <tr>
           <td><%= image_tag @song.user.get_image, size:'50x50' %></td>
           <th><%= @song.user.name %></th>
@@ -19,15 +24,13 @@
         </tr>
         <tr>
           <th>投稿内容</th>
-          <th><%= f.text_area :body, size:"31x5" %></th>
+          <th><%= f.text_area :body, size:"33x7" %></th>
         </tr>
        </table>
-
        <div class="col-sm-9 px-sm-0 offset-sm-3">
        <%= f.submit "変更を保存",class: "btn btn-success" %>
        </div>
        <% end %>
-
     </div>
   </div>
 </div>

@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   
+  validates :name, presence: true
+  
   def get_image
     (image.attached?) ? image : 'no_image.jpg'
   end

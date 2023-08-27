@@ -1,6 +1,15 @@
 <div class="container ">
   <div class="row mt-5">
     <div class='mx-auto col-xs'>
+      
+     <% flash.each do |message_type, message| %>
+     <div class="font-weight-bold mb-3", style="padding-left:230px; color:#FF0000">
+      <i class="fa-regular fa-share-from-square"></i>
+      <%= message %>
+     </div>
+     <% end %>
+      
+      
     <h2 class="text-center font-weight-bold font-italic mb-3">Welcome Progressing!</h2>
     <h5 class="font-weight-bold mb-4">このサイトは、歌唱力UPのためのコミュニティサイトになります。</br>
       投稿や投稿の閲覧にはユーザー登録が必要になります。</h5>
