@@ -16,7 +16,7 @@
       <i class="fa-solid fa-tag", style="padding-left:10px;"></i>
       <%= song.genre.name %>
      </p>
-     <p class="card-text ml-2 mt-2"><%= truncate(song.body, length: 28) %></p>
+     <div class="card-text", style="padding-left:10px;"><%= simple_format(truncate(song.body, length: 28)) %></div>
       <table class="ml-3 mb-3">
        <tr>
         <td id="favorite_buttons_<%=song.id%>"><%= render "public/favorites/favorites", song: song %></td>
